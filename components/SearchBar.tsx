@@ -11,9 +11,16 @@ import Icon from "react-native-vector-icons/FontAwesome";
 type SearchBarType = {
   setSearchKey: (text: string) => void;
   searchKey: string;
+  onSearch: () => void;
+  clearSearchKey: () => void;
 };
 
-const SearchBar: React.FC<SearchBarType> = ({ setSearchKey, searchKey }) => {
+const SearchBar: React.FC<SearchBarType> = ({
+  setSearchKey,
+  searchKey,
+  onSearch,
+  clearSearchKey,
+}) => {
   return (
     <View style={styles.container}>
       <View style={styles.rowContent}>
@@ -25,8 +32,11 @@ const SearchBar: React.FC<SearchBarType> = ({ setSearchKey, searchKey }) => {
           value={searchKey}
           onChangeText={setSearchKey}
         />
+        <TouchableOpacity onPress={clearSearchKey}>
+          <Icon name="close" size={15} color="lightgray" />
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.searchBtn}>
+      <TouchableOpacity style={styles.searchBtn} onPress={onSearch}>
         <Text style={styles.searchBtnText}>Search</Text>
       </TouchableOpacity>
     </View>
