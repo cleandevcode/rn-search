@@ -42,6 +42,8 @@ export default function App() {
     } else {
       const errorText = `This user name does not exist! Please specify an existing user name!`;
       alert(errorText);
+      // Will be replaced with Alert.alert in Development
+      // Alert.alert(errorText)
     }
   }, [setSearchKey, data, searchKey]);
 
